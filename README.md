@@ -15,4 +15,6 @@ I have included a full download of simpletest and the only customization I have 
 
 # Screenshots
 
+![Passed Test](http://github.com/ericbarnes/codeigniter-simpletest/raw/master/screenshots/passed.png "Passed Test")
+
 ![Failed Test](http://github.com/ericbarnes/codeigniter-simpletest/raw/master/screenshots/failed.png "Failed Test")
