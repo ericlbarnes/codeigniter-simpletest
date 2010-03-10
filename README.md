@@ -1,7 +1,13 @@
 # CodeIgniter with SimpleTest
 
 This has been adopted from:
-<http://jamieonsoftware.com/blog/entry/setting-up-the-perfect-codeigniter-tdd-environment>
+[jamieonsoftware](http://jamieonsoftware.com/blog/entry/setting-up-the-perfect-codeigniter-tdd-environment "CodeIgniter TDD")
+
+With help from: 
+John S. - <http://github.com/juven14>
+
+Design From:
+Istvan Pusztai - <http://codeigniter.com/forums/viewthread/129253/P10/#697201>
 
 # Installation
 
@@ -15,6 +21,10 @@ I have included a full download of simpletest and the only customization I have 
 
 # Screenshots
 
+Passed Test
+
 ![Passed Test](http://github.com/ericbarnes/codeigniter-simpletest/raw/master/screenshots/passed.png "Passed Test")
+
+Failed Test
 
 ![Failed Test](http://github.com/ericbarnes/codeigniter-simpletest/raw/master/screenshots/failed.png "Failed Test")
