@@ -3,19 +3,19 @@
  * Please note this file shouldn't be exposed on a live server,
  * there is no filtering of $_POST!!!!
  */
-error_reporting(E_ALL);
-ini_set("display_errors", 0);
-
+error_reporting(0);
+ 
 /**
  * Configure your paths here:
  */
-define('MAIN_PATH', realpath(dirname(__FILE__)).'/');
-define('SIMPLETEST', MAIN_PATH .'tests/simpletest/');
+define('MAIN_PATH', str_replace('/upload', '', realpath(dirname(__FILE__))).'/');
+define('SIMPLETEST', MAIN_PATH .'do_not_upload/tests/simpletest/');
+define('ROOT', MAIN_PATH .'upload/');
+define('TESTS_DIR', MAIN_PATH . 'do_not_upload/tests/');
+define('APP_DIR', MAIN_PATH . 'upload/includes/iclassengine/');
+define('ENV', 'local');
 
-define('TESTS_DIR', MAIN_PATH . 'tests/');
-define('APP_DIR', MAIN_PATH . 'system/application/');
-
-if ( ! empty($_POST)) 
+if ( ! empty($_POST) OR ! empty($_GET)) 
 { 
 	//autorun will load failed test if no tests are present to run
 	require_once SIMPLETEST .'autorun.php';
@@ -23,29 +23,32 @@ if ( ! empty($_POST))
 	require_once SIMPLETEST . 'mock_objects.php';
 	require_once SIMPLETEST . 'extensions/my_reporter.php';
 	$test = new TestSuite();
-	$test->_label = 'CodeIgniter Test Suite';
+	$test->_label = 'iClassEngine Test Suite';
 	
-	class CodeIgniterUnitTestCase extends UnitTestCase 
-	{ 
-		protected $_ci;
+	class CodeIgniterUnitTestCase extends UnitTestCase { 
+		protected $ci;
 
-		public function __construct() 
-		{
+		public function __construct() {
 			parent::UnitTestCase();
-			$this->_ci =& get_instance();
+			$this->_ci = CI_Base::get_instance();
 		}
 	}
 
-	class CodeIgniterWebTestCase extends WebTestCase 
-	{ 
+	class CodeIgniterWebTestCase extends WebTestCase { 
 		protected $_ci;
 
-		public function __construct() 
-		{
+		public function __construct() {
 			parent::WebTestCase();
-			$this->_ci =& get_instance();
+			$this->_ci = CI_Base::get_instance();
 		}
 	}
+}
+
+// Because get is removed in ci we pull it out here.
+$run_all = FALSE;
+if (isset($_GET['all']))
+{
+	$run_all = TRUE;
 }
 
 function add_test($dir, $file, &$test) 
@@ -55,6 +58,10 @@ function add_test($dir, $file, &$test)
 	{
 		$test->addTestFile(TESTS_DIR . $dir .'/' . $file);
 	}
+	elseif (file_exists(EXTPATH . $dir .'/'. $file)) 
+	{
+		$test->addTestFile(EXTPATH . $dir .'/' . $file);
+	}
 }
 
 
@@ -62,14 +69,29 @@ function add_test($dir, $file, &$test)
 
 //Capture CodeIgniter output, discard and load system into $CI variable
 ob_start();
-	include(MAIN_PATH . 'index.php');
+	include(ROOT . 'index.php');
 	$CI =& get_instance();
 ob_end_clean();
 
+// This checks to see if setup needs to be ran.
+if ( ! defined('ENV'))
+{
+	redirect('home');
+}
+
+$CI->session->sess_destroy();
 $CI->load->helper('directory');
-$CI->load->helper('url');
 
 $url = base_url();
+
+// Get all addons
+foreach (directory_map(EXTPATH, TRUE) AS $addon)
+{
+	if (file_exists(EXTPATH . $addon .'/'.$addon.'_unit_test.php'))
+	{
+		$addons[] = $addon;
+	}
+}
 
 // Get all main tests
 function read_dir($dir)
@@ -77,10 +99,7 @@ function read_dir($dir)
 	$dirs = array();
 	foreach (directory_map($dir) AS $dir)
 	{
-		if (strstr($dir, '.php'))
-		{
-			$dirs[] = $dir;
-		}
+		$dirs[] = $dir;
 	}
 	return $dirs;
 }
@@ -92,27 +111,34 @@ $libraries = read_dir(TESTS_DIR . 'libraries');
 $bugs = read_dir(TESTS_DIR . 'bugs');
 $helpers = read_dir(TESTS_DIR . 'helpers');
 
-
-if ( ! empty($_POST) && ! isset($_POST['test']))
+if ($run_all OR ( ! empty($_POST) && ! isset($_POST['test'])))
 {
 	$run_tests = TRUE;
+	if (isset($_POST['addons']) OR isset($_POST['all']) OR $run_all) 
+	{
+		foreach ($addons as $value) 
+		{
+			$file = $value.'_unit_test.php';
+			add_test($value, $file, $test);
+		}
+	}
 	
-	if (isset($_POST['controllers']) OR isset($_POST['all'])) {
+	if (isset($_POST['controllers']) OR isset($_POST['all']) OR $run_all) {
 		$dirs[] = TESTS_DIR . 'controllers';
 	}
-	if (isset($_POST['models']) OR isset($_POST['all'])) {
+	if (isset($_POST['models']) OR isset($_POST['all']) OR $run_all) {
 		$dirs[] = TESTS_DIR . 'models';
 	}
-	if (isset($_POST['views']) OR isset($_POST['all'])) {
+	if (isset($_POST['views']) OR isset($_POST['all']) OR $run_all) {
 		$dirs[] = TESTS_DIR . 'views';
 	}
-	if (isset($_POST['libraries']) OR isset($_POST['all'])) {
+	if (isset($_POST['libraries']) OR isset($_POST['all']) OR $run_all) {
 		$dirs[] = TESTS_DIR . 'libraries';
 	}
-	if (isset($_POST['bugs']) OR isset($_POST['all'])) {
+	if (isset($_POST['bugs']) OR isset($_POST['all']) OR $run_all) {
 		$dirs[] = TESTS_DIR . 'bugs';
 	}
-	if (isset($_POST['helpers']) OR isset($_POST['all'])) {
+	if (isset($_POST['helpers']) OR isset($_POST['all']) OR $run_all) {
 		$dirs[] = TESTS_DIR . 'helpers';
 	}
 
@@ -164,12 +190,24 @@ elseif (isset($_POST['test'])) //single test
 	require_once SIMPLETEST . 'mock_objects.php';
 	require_once SIMPLETEST . 'extensions/my_reporter.php';
 	$test = new TestSuite();
-	$test->_label = 'CodeIgniter Test Suite';
+	$test->_label = 'iClassEngine Test Suite';
 	
-	if (file_exists(TESTS_DIR . $file)) 
+	if (false !== strpos($file, 'addons')) 
 	{
-		$run_tests = TRUE;
-		$test->addTestFile(TESTS_DIR . $file);
+		$file = str_replace('addons/', '', $file);
+		if (file_exists(EXTPATH . $file)) 
+		{
+			$run_tests = TRUE;
+			$test->addTestFile(EXTPATH . $file);
+		}
+	} 
+	else
+	{
+		if (file_exists(TESTS_DIR . $file)) 
+		{
+			$run_tests = TRUE;
+			$test->addTestFile(TESTS_DIR . $file);
+		}
 	}
 }
 
