@@ -39,41 +39,54 @@
 			<input type="hidden" name="bugs" value="1" />
 			<input type="submit" value="Bugs" />
 		</form>
+		
+		<?php
+		// RT Wolf's addition: HTML select the test you just ran in drop down list in case you want to rerun it.
+		// www.mind-manual.com
+		if (isset($_POST['test']) && trim($_POST['test']) != "") {
+			$testName = explode('/', $_POST['test']);
+			$testName = $testName[1];
+		}
+		else {
+			$testName = "";
+		}
+		?>
+		
 		<form action="<?php echo $form_url; ?>" method="post">
 			<select name="test">
 				<optgroup label="Add Ons">
 					<?php foreach ($addons as $value) { ?>
-						<option value="addons/<?php echo $value ?>/<?php echo $value ?>_unit_test.php"><?php echo $value; ?></option>
+						<option value="addons/<?php echo $value ?>/<?php echo $value ?>_unit_test.php" <?php if ($value == $testName) { echo 'selected="selected"'; } ?>><?php echo $value; ?></option>
 					<?php } ?>
 				</optgroup>
 				<optgroup label="Libraries">
 					<?php foreach ($libraries as $value) { ?>
-						<option value="libraries/<?php echo $value ?>"><?php echo $value; ?></option>
+						<option value="libraries/<?php echo $value ?>" <?php if ($value == $testName) { echo 'selected="selected"'; } ?>><?php echo $value; ?></option>
 					<?php } ?>
 				</optgroup>
 				<optgroup label="Controllers">
 					<?php foreach ($controllers as $value) { ?>
-						<option value="controllers/<?php echo $value ?>"><?php echo $value; ?></option>
+						<option value="controllers/<?php echo $value ?>" <?php if ($value == $testName) { echo 'selected="selected"'; } ?>><?php echo $value; ?></option>
 					<?php } ?>
 				</optgroup>
 				<optgroup label="Models">
 					<?php foreach ($models as $value) { ?>
-						<option value="models/<?php echo $value ?>"><?php echo $value; ?></option>
+						<option value="models/<?php echo $value ?>" <?php if ($value == $testName) { echo 'selected="selected"'; } ?>><?php echo $value; ?></option>
 					<?php } ?>
 				</optgroup>
 				<optgroup label="Helpers">
 					<?php foreach ($helpers as $value) { ?>
-						<option value="helpers/<?php echo $value ?>"><?php echo $value; ?></option>
+						<option value="helpers/<?php echo $value ?>" <?php if ($value == $testName) { echo 'selected="selected"'; } ?>><?php echo $value; ?></option>
 					<?php } ?>
 				</optgroup>
 				<optgroup label="Views">
 					<?php foreach ($views as $value) { ?>
-						<option value="views/<?php echo $value ?>"><?php echo $value; ?></option>
+						<option value="views/<?php echo $value ?>" <?php if ($value == $testName) { echo 'selected="selected"'; } ?>><?php echo $value; ?></option>
 					<?php } ?>
 				</optgroup>
 				<optgroup label="Bugs">
 					<?php foreach ($bugs as $value) { ?>
-						<option value="bugs/<?php echo $value ?>"><?php echo $value; ?></option>
+						<option value="bugs/<?php echo $value ?>" <?php if ($value == $testName) { echo 'selected="selected"'; } ?>><?php echo $value; ?></option>
 					<?php } ?>
 				</optgroup>
 			</select>
