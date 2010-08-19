@@ -54,11 +54,6 @@
 		
 		<form action="<?php echo $form_url; ?>" method="post">
 			<select name="test">
-				<optgroup label="Add Ons">
-					<?php foreach ($addons as $value) { ?>
-						<option value="addons/<?php echo $value ?>/<?php echo $value ?>_unit_test.php" <?php if ($value == $testName) { echo 'selected="selected"'; } ?>><?php echo $value; ?></option>
-					<?php } ?>
-				</optgroup>
 				<optgroup label="Libraries">
 					<?php foreach ($libraries as $value) { ?>
 						<option value="libraries/<?php echo $value ?>" <?php if ($value == $testName) { echo 'selected="selected"'; } ?>><?php echo $value; ?></option>
