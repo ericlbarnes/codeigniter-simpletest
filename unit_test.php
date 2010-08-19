@@ -8,11 +8,12 @@ error_reporting(0);
 /**
  * Configure your paths here:
  */
-define('MAIN_PATH', str_replace('/upload', '', realpath(dirname(__FILE__))).'/');
-define('SIMPLETEST', MAIN_PATH .'do_not_upload/tests/simpletest/');
-define('ROOT', MAIN_PATH .'upload/');
-define('TESTS_DIR', MAIN_PATH . 'do_not_upload/tests/');
-define('APP_DIR', MAIN_PATH . 'upload/includes/iclassengine/');
+$test_suite = 'CodeIgniter Test Suite';
+define('MAIN_PATH', realpath(dirname(__FILE__)).'/'); 
+define('SIMPLETEST', MAIN_PATH .'tests/simpletest/'); // Directory of simpletest
+define('ROOT', MAIN_PATH); // Directory of codeigniter index.php
+define('TESTS_DIR', MAIN_PATH . 'tests/'); // Directory of your tests.
+define('APP_DIR', MAIN_PATH . 'application/'); // CodeIgniter Application directory
 define('ENV', 'local');
 
 if ( ! empty($_POST) OR ! empty($_GET)) 
@@ -23,7 +24,7 @@ if ( ! empty($_POST) OR ! empty($_GET))
 	require_once SIMPLETEST . 'mock_objects.php';
 	require_once SIMPLETEST . 'extensions/my_reporter.php';
 	$test = new TestSuite();
-	$test->_label = 'iClassEngine Test Suite';
+	$test->_label = $test_suite;
 	
 	class CodeIgniterUnitTestCase extends UnitTestCase { 
 		protected $ci;
@@ -78,20 +79,13 @@ if ( ! defined('ENV'))
 {
 	redirect('home');
 }
-
-$CI->session->sess_destroy();
+$CI->load->library('session');
+$CI->load->helper('url');
 $CI->load->helper('directory');
+$CI->session->sess_destroy();
 
 $url = base_url();
 
-// Get all addons
-foreach (directory_map(EXTPATH, TRUE) AS $addon)
-{
-	if (file_exists(EXTPATH . $addon .'/'.$addon.'_unit_test.php'))
-	{
-		$addons[] = $addon;
-	}
-}
 
 // Get all main tests
 function read_dir($dir)
@@ -114,14 +108,6 @@ $helpers = read_dir(TESTS_DIR . 'helpers');
 if ($run_all OR ( ! empty($_POST) && ! isset($_POST['test'])))
 {
 	$run_tests = TRUE;
-	if (isset($_POST['addons']) OR isset($_POST['all']) OR $run_all) 
-	{
-		foreach ($addons as $value) 
-		{
-			$file = $value.'_unit_test.php';
-			add_test($value, $file, $test);
-		}
-	}
 	
 	if (isset($_POST['controllers']) OR isset($_POST['all']) OR $run_all) {
 		$dirs[] = TESTS_DIR . 'controllers';
@@ -190,24 +176,12 @@ elseif (isset($_POST['test'])) //single test
 	require_once SIMPLETEST . 'mock_objects.php';
 	require_once SIMPLETEST . 'extensions/my_reporter.php';
 	$test = new TestSuite();
-	$test->_label = 'iClassEngine Test Suite';
+	$test->_label = $test_suite;
 	
-	if (false !== strpos($file, 'addons')) 
+	if (file_exists(TESTS_DIR . $file)) 
 	{
-		$file = str_replace('addons/', '', $file);
-		if (file_exists(EXTPATH . $file)) 
-		{
-			$run_tests = TRUE;
-			$test->addTestFile(EXTPATH . $file);
-		}
-	} 
-	else
-	{
-		if (file_exists(TESTS_DIR . $file)) 
-		{
-			$run_tests = TRUE;
-			$test->addTestFile(TESTS_DIR . $file);
-		}
+		$run_tests = TRUE;
+		$test->addTestFile(TESTS_DIR . $file);
 	}
 }
 

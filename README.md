@@ -13,7 +13,7 @@ Istvan Pusztai - <http://codeigniter.com/forums/viewthread/129253/P10/#697201>
 
 The unit_test.php file should go in your CodeIgniter root. The same place as index.php
 
-You should open that file and alter your paths. 
+You should open that file and alter your paths at the top. 
 
 The tests directory can be moved any where you want but they are setup to be in the root as well. 
 
