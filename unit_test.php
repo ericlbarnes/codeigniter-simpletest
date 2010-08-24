@@ -59,10 +59,6 @@ function add_test($dir, $file, &$test)
 	{
 		$test->addTestFile(TESTS_DIR . $dir .'/' . $file);
 	}
-	elseif (file_exists(EXTPATH . $dir .'/'. $file)) 
-	{
-		$test->addTestFile(EXTPATH . $dir .'/' . $file);
-	}
 }
 
 
