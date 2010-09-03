@@ -4,20 +4,20 @@
  * there is no filtering of $_POST!!!!
  */
 error_reporting(0);
- 
+
 /**
  * Configure your paths here:
  */
 $test_suite = 'CodeIgniter Test Suite';
-define('MAIN_PATH', realpath(dirname(__FILE__)).'/'); 
+define('MAIN_PATH', realpath(dirname(__FILE__)).'/');
 define('SIMPLETEST', MAIN_PATH .'tests/simpletest/'); // Directory of simpletest
 define('ROOT', MAIN_PATH); // Directory of codeigniter index.php
 define('TESTS_DIR', MAIN_PATH . 'tests/'); // Directory of your tests.
 define('APP_DIR', MAIN_PATH . 'application/'); // CodeIgniter Application directory
 define('ENV', 'local');
 
-if ( ! empty($_POST) OR ! empty($_GET)) 
-{ 
+if ( ! empty($_POST) OR ! empty($_GET))
+{
 	//autorun will load failed test if no tests are present to run
 	require_once SIMPLETEST .'autorun.php';
 	require_once SIMPLETEST .'web_tester.php';
@@ -25,22 +25,22 @@ if ( ! empty($_POST) OR ! empty($_GET))
 	require_once SIMPLETEST . 'extensions/my_reporter.php';
 	$test = new TestSuite();
 	$test->_label = $test_suite;
-	
-	class CodeIgniterUnitTestCase extends UnitTestCase { 
+
+	class CodeIgniterUnitTestCase extends UnitTestCase {
 		protected $ci;
 
 		public function __construct() {
 			parent::UnitTestCase();
-			$this->_ci = CI_Base::get_instance();
+			$this->_ci =& get_instance();
 		}
 	}
 
-	class CodeIgniterWebTestCase extends WebTestCase { 
+	class CodeIgniterWebTestCase extends WebTestCase {
 		protected $_ci;
 
 		public function __construct() {
 			parent::WebTestCase();
-			$this->_ci = CI_Base::get_instance();
+			$this->_ci =& get_instance();
 		}
 	}
 }
@@ -52,10 +52,10 @@ if (isset($_GET['all']))
 	$run_all = TRUE;
 }
 
-function add_test($dir, $file, &$test) 
+function add_test($dir, $file, &$test)
 {
 	$implementation = '';
-	if (file_exists(TESTS_DIR . $dir .'/'. $file)) 
+	if (file_exists(TESTS_DIR . $dir .'/'. $file))
 	{
 		$test->addTestFile(TESTS_DIR . $dir .'/' . $file);
 	}
@@ -104,7 +104,7 @@ $helpers = read_dir(TESTS_DIR . 'helpers');
 if ($run_all OR ( ! empty($_POST) && ! isset($_POST['test'])))
 {
 	$run_tests = TRUE;
-	
+
 	if (isset($_POST['controllers']) OR isset($_POST['all']) OR $run_all) {
 		$dirs[] = TESTS_DIR . 'controllers';
 	}
@@ -126,11 +126,11 @@ if ($run_all OR ( ! empty($_POST) && ! isset($_POST['test'])))
 
 	if ( ! empty($dirs))
 	{
-		foreach ($dirs as $dir) 
+		foreach ($dirs as $dir)
 		{
 			$dir_files = read_dir($dir);
 
-			foreach ($dir_files as $file) 
+			foreach ($dir_files as $file)
 			{
 				if (false !== strpos($file, '_controller')) {
 					if (file_exists(TESTS_DIR . 'controllers/' . $file)) {
@@ -153,7 +153,7 @@ if ($run_all OR ( ! empty($_POST) && ! isset($_POST['test'])))
 						add_test('bugs', $file, $test);
 					}
 				} elseif (false !== strpos($file, '_helper')) {
-					
+
 					if (file_exists(TESTS_DIR . 'helpers/' . $file)) {
 						add_test('helpers', $file, $test);
 					}
@@ -163,9 +163,9 @@ if ($run_all OR ( ! empty($_POST) && ! isset($_POST['test'])))
 	}
 }
 elseif (isset($_POST['test'])) //single test
-{ 
+{
 	$file = $_POST['test'];
-	
+
 	//autorun will load failed test if no tests are present to run
 	require_once SIMPLETEST .'autorun.php';
 	require_once SIMPLETEST .'web_tester.php';
@@ -173,8 +173,8 @@ elseif (isset($_POST['test'])) //single test
 	require_once SIMPLETEST . 'extensions/my_reporter.php';
 	$test = new TestSuite();
 	$test->_label = $test_suite;
-	
-	if (file_exists(TESTS_DIR . $file)) 
+
+	if (file_exists(TESTS_DIR . $file))
 	{
 		$run_tests = TRUE;
 		$test->addTestFile(TESTS_DIR . $file);
