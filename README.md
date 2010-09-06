@@ -17,11 +17,19 @@ You should open that file and alter your paths at the top.
 
 The tests directory can be moved any where you want but they are setup to be in the root as well.
 
+All test files need to be named `test_name_folder.php`. For example:
+
+	test_whatever_bug.php
+	test_string_helper.php
+	test_auth_library.php
+	test_core_model.php
+
+
 I have included a full download of simpletest and the only customization I have made is to the `simpletest/extensions/my_reporter.php`
 
 ## NOTES:
 
-Inside the "tests" directory I include two example test files. The test_users_model.php will not run on its own and is supplied just as an example.
+Inside the "tests" directory I include two example test files. The test_users_model.php will not run on its own because your application would not include the same users model as the example file. It is supplied just as an example.
 
 # Screenshots
 
