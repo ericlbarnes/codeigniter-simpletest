@@ -91,7 +91,7 @@
 		
 		
 	<div id="report">
-		<?php if (isset($run_tests)) $test->run(new MyReporter()); ?>
+		<?php $test_suite->run(new MyReporter()); ?>
 	</div>
 		
 </body>
