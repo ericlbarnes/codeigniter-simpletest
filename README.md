@@ -43,7 +43,8 @@ Failed Test
 
 # Credits
 
-  * [jamieonsoftware](http://jamieonsoftware.com/blog/entry/setting-up-the-perfect-codeigniter-tdd-environment "CodeIgniter TDD")
+  * Joe Tsui - <http://www.joetsuihk.com/>
+  * Jamie Rumbelow - [jamieonsoftware](http://jamieonsoftware.com/blog/entry/setting-up-the-perfect-codeigniter-tdd-environment "CodeIgniter TDD")
   * RT Wolf - <http://www.mind-manual.com>
   * John S. - <http://github.com/juven14>
   * Istvan Pusztai - <http://codeigniter.com/forums/viewthread/129253/P10/#697201>
