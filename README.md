@@ -29,7 +29,7 @@ I have included a full download of simpletest and the only customization I have 
 
 ## NOTES:
 
-Inside the "tests" directory I include two example test files. The test_users_model.php will not run on its own because your application would not include the same users model as the example file. It is supplied just as an example.
+Inside the "tests" directory I include two example test files. The test_users_model.php will not run on its own because your application would not include the same users model as the example file. It is supplied just as a guide.
 
 # Screenshots
 
