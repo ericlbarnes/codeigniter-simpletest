@@ -25,13 +25,18 @@ $test_suite = new TestSuite();
 $test_suite->_label = 'CodeIgniter Test Suite';
 
 class CodeIgniterUnitTestCase extends UnitTestCase {
-	protected $ci;
+	protected $_ci;
 
 	public function __construct()
 	{
 		parent::UnitTestCase();
 		$this->_ci =& get_instance();
 	}
+
+	public function __get($var)
+    {
+		return $this->_ci->$var;
+    }
 }
 
 class CodeIgniterWebTestCase extends WebTestCase {
@@ -42,6 +47,11 @@ class CodeIgniterWebTestCase extends WebTestCase {
 		parent::WebTestCase();
 		$this->_ci =& get_instance();
 	}
+
+	public function __get($var)
+    {
+		return $this->_ci->$var;
+    }
 }
 
 // Because get is removed in ci we pull it out here.
