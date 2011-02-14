@@ -4,6 +4,7 @@
  * there is no filtering of $_POST!!!!
  */
 error_reporting(0);
+$cli_mode = setup_cli($argv); // Determines if running in cli mode
 
 /**
  * Configure your paths here:
@@ -13,6 +14,7 @@ define('SIMPLETEST', MAIN_PATH .'tests/simpletest/'); // Directory of simpletest
 define('ROOT', MAIN_PATH); // Directory of codeigniter index.php
 define('TESTS_DIR', MAIN_PATH . 'tests/'); // Directory of your tests.
 define('APP_DIR', MAIN_PATH . 'application/'); // CodeIgniter Application directory
+
 
 //do not use autorun as it output ugly report upon no test run
 require_once SIMPLETEST . 'unit_tester.php';
@@ -109,6 +111,39 @@ elseif (isset($_POST['test'])) //single test
 // ------------------------------------------------------------------------
 
 /**
+ * Function to determine if in cli mode and if so set up variables to make it work
+ *
+ * @param Array of commandline args
+ * @return Boolean true or false if commandline mode setup
+ *
+ */
+function setup_cli($argv)
+{
+	if (php_sapi_name() == 'cli') 
+	{
+		if(isset($argv[1])) 
+		{
+			if(stripos($argv[1],'.php') !== false)
+			{
+				$_POST['test'] = $argv[1];
+                        }
+			else 
+			{
+				$_POST[$argv[1]] = $argv[1];
+			}
+		}
+		else 
+		{
+			$_POST['all'] = 'all';
+		}
+		$_SERVER['HTTP_HOST'] = '';
+		$_SERVER['REQUEST_URI'] = '';
+		return true;
+	}
+	return false;
+}
+
+/**
  * Function to map tests and strip .html files.
  *
  *
@@ -145,4 +180,9 @@ $helpers = map_tests(TESTS_DIR . 'helpers');
 $form_url =  'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 //display the form
-include(TESTS_DIR . 'test_gui.php');
+if ($cli_mode) {
+    exit ($test_suite->run(new TextReporter()) ? 0 : 1);
+}
+else {
+    include(TESTS_DIR . 'test_gui.php');
+}
