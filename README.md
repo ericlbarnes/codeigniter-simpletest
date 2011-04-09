@@ -25,21 +25,17 @@ All test files need to be named `test_name_folder.php`. For example:
 	test_core_model.php
 
 
-I have included a full download of simpletest and the only customization I have made is to the `simpletest/extensions/my_reporter.php`
+I have included a full download of simpletest and the only customization I have made is to the `simpletest/extensions/my_reporter.php`.
 
 ## NOTES:
 
 Inside the "tests" directory I include two example test files. The test_users_model.php will not run on its own because your application would not include the same users model as the example file. It is supplied just as a guide.
 
+Also note that the version of simpletest included does not support php 5.3. I plan to upgrade it at some point.
+
 # Screenshots
 
-Passed Test
-
-![Passed Test](http://github.com/ericbarnes/codeigniter-simpletest/raw/master/screenshots/passed.png "Passed Test")
-
-Failed Test
-
-![Failed Test](http://github.com/ericbarnes/codeigniter-simpletest/raw/master/screenshots/failed.png "Failed Test")
+View the screenshots directory.
 
 # Credits
 
