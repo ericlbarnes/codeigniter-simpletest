@@ -1,5 +1,12 @@
 # CodeIgniter with SimpleTest
 
+Updates:
+
+April 25, 2011 - The CodeIgniter core is now being converted to using phpUnit and as such I can't see myself updating this in the future. It will be left here
+for anyone to use and I will gladly pull in any changes but no new features will be added by me directly. 
+
+## Overview
+
 This has been adopted from:
 [jamieonsoftware](http://jamieonsoftware.com/blog/entry/setting-up-the-perfect-codeigniter-tdd-environment "CodeIgniter TDD")
 
@@ -9,7 +16,7 @@ John S. - <http://github.com/juven14>
 Design From:
 Istvan Pusztai - <http://codeigniter.com/forums/viewthread/129253/P10/#697201>
 
-# Installation
+## Installation
 
 The unit_test.php file should go in your CodeIgniter root. The same place as index.php
 
@@ -27,17 +34,13 @@ All test files need to be named `test_name_folder.php`. For example:
 
 I have included a full download of simpletest and the only customization I have made is to the `simpletest/extensions/my_reporter.php`.
 
-## NOTES:
+### NOTES:
 
 Inside the "tests" directory I include two example test files. The test_users_model.php will not run on its own because your application would not include the same users model as the example file. It is supplied just as a guide.
 
 Also note that the version of simpletest included does not support php 5.3. I plan to upgrade it at some point.
 
-# Screenshots
-
-View the screenshots directory.
-
-# Credits
+## Credits
 
   * Joe Tsui - <http://www.joetsuihk.com/>
   * Jamie Rumbelow - [jamieonsoftware](http://jamieonsoftware.com/blog/entry/setting-up-the-perfect-codeigniter-tdd-environment "CodeIgniter TDD")
