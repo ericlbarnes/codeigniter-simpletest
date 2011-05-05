@@ -81,7 +81,7 @@ class ShellTestCase extends SimpleTestCase {
      *    @access public
      */
     function __construct($label = false) {
-        $this->SimpleTestCase($label);
+        parent::__construct($label);
         $this->_current_shell = &$this->_createShell();
         $this->_last_status = false;
         $this->_last_command = '';

@@ -32,7 +32,7 @@ class FieldExpectation extends SimpleExpectation {
      *    @access public
      */
     function __construct($value, $message = '%s') {
-        $this->SimpleExpectation($message);
+        parent::__construct($message);
         if (is_array($value)) {
             sort($value);
         }
@@ -146,7 +146,7 @@ class HttpHeaderExpectation extends SimpleExpectation {
      *                            a placeholder for the original message.
      */
     function __construct($header, $value = false, $message = '%s') {
-        $this->SimpleExpectation($message);
+        parent::__construct($message);
         $this->_expected_header = $this->_normaliseHeader($header);
         $this->_expected_value = $value;
     }
@@ -272,7 +272,7 @@ class NoHttpHeaderExpectation extends HttpHeaderExpectation {
      *                              a placeholder for the original message.
      */
     function __construct($unwanted, $message = '%s') {
-        $this->HttpHeaderExpectation($unwanted, false, $message);
+        parent::__construct($unwanted, false, $message);
     }
     
     /**
@@ -317,7 +317,7 @@ class TextExpectation extends SimpleExpectation {
      *    @access public
      */
     function __construct($substring, $message = '%s') {
-        $this->SimpleExpectation($message);
+        parent::__construct($message);
         $this->_substring = $substring;
     }
     
@@ -390,7 +390,7 @@ class NoTextExpectation extends TextExpectation {
      *    @access public
      */
     function __construct($substring, $message = '%s') {
-        $this->TextExpectation($substring, $message);
+        parent::__construct($substring, $message);
     }
     
     /**
@@ -442,7 +442,7 @@ class WebTestCase extends SimpleTestCase {
      *    @access public
      */
     function __construct($label = false) {
-        $this->SimpleTestCase($label);
+        parent::__construct($label);
     }
     
     /**

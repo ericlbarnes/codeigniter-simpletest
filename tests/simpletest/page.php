@@ -127,7 +127,7 @@ class SimplePageBuilder extends SimpleSaxListener {
      *    @access public
      */
     function __constructBuilder() {
-        $this->SimpleSaxListener();
+        parent::__construct();
     }
     
     /**

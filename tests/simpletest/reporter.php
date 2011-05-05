@@ -28,7 +28,7 @@ class HtmlReporter extends SimpleReporter {
      *    @access public
      */
     function __construct($character_set = 'ISO-8859-1') {
-        $this->SimpleReporter();
+        parent::__construct();
         $this->_character_set = $character_set;
     }
 
@@ -200,7 +200,7 @@ class TextReporter extends SimpleReporter {
      *    @access public
      */
     function __construct() {
-        $this->SimpleReporter();
+        parent::__construct();
     }
 
     /**
@@ -333,7 +333,7 @@ class SelectiveReporter extends SimpleReporterDecorator {
         if (isset($just_this_test) && $just_this_test) {
             $this->_just_this_test = strtolower($just_this_test);
         }
-        $this->SimpleReporterDecorator($reporter);
+        parent::__construct($reporter);
     }
 
     /**

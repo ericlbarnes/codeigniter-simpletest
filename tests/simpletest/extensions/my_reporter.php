@@ -13,7 +13,7 @@ class MyReporter extends SimpleReporter {
 
 	public function __construct($character_set='utf-8')
 	{
-		 $this->SimpleReporter();
+		 parent::__construct();
 		 $this->_character_set = $character_set;
 
 	}

@@ -33,7 +33,7 @@ class UnitTestCase extends SimpleTestCase {
         if (! $label) {
             $label = get_class($this);
         }
-        $this->SimpleTestCase($label);
+        parent::__construct($label);
     }
 
     /**

@@ -7,7 +7,7 @@ Mock::generate('TestSuite');
 
 class PathEqualExpectation extends EqualExpectation {
 	function __construct($value, $message = '%s') {
-    	$this->EqualExpectation(str_replace("\\", '/', $value), $message);
+    	parent::__construct(str_replace("\\", '/', $value), $message);
 	}
 
     function test($compare) {

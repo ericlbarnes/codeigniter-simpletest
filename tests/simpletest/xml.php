@@ -29,7 +29,7 @@ class XmlReporter extends SimpleReporter {
      *    @access public
      */
     function __construct($namespace = false, $indent = '  ') {
-        $this->SimpleReporter();
+        parent::__construct();
         $this->_namespace = ($namespace ? $namespace . ':' : '');
         $this->_indent = $indent;
     }
@@ -348,7 +348,7 @@ class NestingMethodTag extends NestingXmlTag {
      *    @access public
      */
     function __construct($attributes) {
-        $this->NestingXmlTag($attributes);
+        parent::__construct($attributes);
     }
 
     /**
@@ -388,7 +388,7 @@ class NestingCaseTag extends NestingXmlTag {
      *    @access public
      */
     function __construct($attributes) {
-        $this->NestingXmlTag($attributes);
+        parent::__construct($attributes);
     }
 
     /**
@@ -428,7 +428,7 @@ class NestingGroupTag extends NestingXmlTag {
      *    @access public
      */
     function __construct($attributes) {
-        $this->NestingXmlTag($attributes);
+        parent::__construct($attributes);
     }
 
     /**

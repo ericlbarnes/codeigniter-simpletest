@@ -336,7 +336,7 @@ class SimpleGetEncoding extends SimpleEncoding {
      *    @access public
      */
     function __construct($query = false) {
-        $this->SimpleEncoding($query);
+        parent::__construct($query);
     }
     
     /**
@@ -391,7 +391,7 @@ class SimpleHeadEncoding extends SimpleGetEncoding {
      *    @access public
      */
     function __construct($query = false) {
-        $this->SimpleGetEncoding($query);
+        parent::__construct($query);
     }
     
     /**
@@ -423,7 +423,7 @@ class SimplePostEncoding extends SimpleEncoding {
         if (is_array($query) and $this->hasMoreThanOneLevel($query)) {
             $query = $this->rewriteArrayWithMultipleLevels($query);
         }
-        $this->SimpleEncoding($query);
+        parent::__construct($query);
     }
     
     function hasMoreThanOneLevel($query) {
@@ -510,7 +510,7 @@ class SimpleMultipartEncoding extends SimplePostEncoding {
      *    @access public
      */
     function __construct($query = false, $boundary = false) {
-        $this->SimplePostEncoding($query);
+        parent::__construct($query);
         $this->_boundary = ($boundary === false ? uniqid('st') : $boundary);
     }
     

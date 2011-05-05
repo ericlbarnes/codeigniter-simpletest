@@ -44,7 +44,7 @@ class ParametersExpectation extends SimpleExpectation {
      *    @access public
      */
     function __construct($expected = false, $message = '%s') {
-        $this->SimpleExpectation($message);
+        parent::__construct($message);
         $this->_expected = $expected;
     }
 
@@ -178,7 +178,7 @@ class CallCountExpectation extends SimpleExpectation {
     function __construct($method, $count, $message = '%s') {
         $this->_method = $method;
         $this->_count = $count;
-        $this->SimpleExpectation($message);
+        parent::__construct($message);
     }
 
     /**
@@ -223,7 +223,7 @@ class MinimumCallCountExpectation extends SimpleExpectation {
     function __construct($method, $count, $message = '%s') {
         $this->_method = $method;
         $this->_count = $count;
-        $this->SimpleExpectation($message);
+        parent::__construct($message);
     }
 
     /**
@@ -268,7 +268,7 @@ class MaximumCallCountExpectation extends SimpleExpectation {
     function __construct($method, $count, $message = '%s') {
         $this->_method = $method;
         $this->_count = $count;
-        $this->SimpleExpectation($message);
+        parent::__construct($message);
     }
 
     /**

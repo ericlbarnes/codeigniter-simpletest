@@ -446,7 +446,7 @@ Mock::generate('SimpleTestCase');
 class LikeExpectation extends IdenticalExpectation {
     function __construct($expectation) {
         $expectation->_message = '';
-        $this->IdenticalExpectation($expectation);
+        parent::__construct($expectation);
     }
 
     function test($compare) {

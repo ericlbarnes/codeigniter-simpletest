@@ -231,7 +231,7 @@ class EqualExpectation extends SimpleExpectation {
      *    @access public
      */
     function __construct($value, $message = '%s') {
-        $this->SimpleExpectation($message);
+        parent::__construct($message);
         $this->_value = $value;
     }
 
@@ -286,7 +286,7 @@ class NotEqualExpectation extends EqualExpectation {
      *    @access public
      */
     function __construct($value, $message = '%s') {
-        $this->EqualExpectation($value, $message);
+        parent::__construct($value, $message);
     }
 
     /**
@@ -338,7 +338,7 @@ class WithinMarginExpectation extends SimpleExpectation {
      *    @access public
      */
     function __construct($value, $margin, $message = '%s') {
-        $this->SimpleExpectation($message);
+        parent::__construct($message);
         $this->_upper = $value + $margin;
         $this->_lower = $value - $margin;
     }
@@ -411,7 +411,7 @@ class OutsideMarginExpectation extends WithinMarginExpectation {
      *    @access public
      */
     function __construct($value, $margin, $message = '%s') {
-        $this->WithinMarginExpectation($value, $margin, $message);
+        parent::__construct($value, $margin, $message);
     }
 
     /**
@@ -456,7 +456,7 @@ class ReferenceExpectation extends SimpleExpectation {
      *    @access public
      */
     function __construct(&$value, $message = '%s') {
-        $this->SimpleExpectation($message);
+        parent::__construct($message);
         $this->_value =& $value;
     }
 
@@ -506,7 +506,7 @@ class IdenticalExpectation extends EqualExpectation {
      *    @access public
      */
     function __construct($value, $message = '%s') {
-        $this->EqualExpectation($value, $message);
+        parent::__construct($value, $message);
     }
 
     /**
@@ -554,7 +554,7 @@ class NotIdenticalExpectation extends IdenticalExpectation {
      *    @access public
      */
     function __construct($value, $message = '%s') {
-        $this->IdenticalExpectation($value, $message);
+        parent::__construct($value, $message);
     }
 
     /**
@@ -601,7 +601,7 @@ class PatternExpectation extends SimpleExpectation {
      *    @access public
      */
     function __construct($pattern, $message = '%s') {
-        $this->SimpleExpectation($message);
+        parent::__construct($message);
         $this->_pattern = $pattern;
     }
 
@@ -684,7 +684,7 @@ class NoPatternExpectation extends PatternExpectation {
      *    @access public
      */
     function __construct($pattern, $message = '%s') {
-        $this->PatternExpectation($pattern, $message);
+        parent::__construct($pattern, $message);
     }
 
     /**
@@ -740,7 +740,7 @@ class IsAExpectation extends SimpleExpectation {
      *    @access public
      */
     function __construct($type, $message = '%s') {
-        $this->SimpleExpectation($message);
+        parent::__construct($message);
         $this->_type = $type;
     }
 
@@ -817,7 +817,7 @@ class NotAExpectation extends IsAExpectation {
      *    @access public
      */
     function __construct($type, $message = '%s') {
-        $this->IsAExpectation($type, $message);
+        parent::__construct($type, $message);
     }
 
     /**
@@ -861,7 +861,7 @@ class MethodExistsExpectation extends SimpleExpectation {
      *    @return void
      */
     function __construct($method, $message = '%s') {
-        $this->SimpleExpectation($message);
+        parent::__construct($message);
         $this->_method = &$method;
     }
 

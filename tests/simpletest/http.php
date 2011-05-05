@@ -126,7 +126,7 @@ class SimpleProxyRoute extends SimpleRoute {
      *    @access public
      */
     function __construct($url, $proxy, $username = false, $password = false) {
-        $this->SimpleRoute($url);
+        parent::__construct($url);
         $this->_proxy = $proxy;
         $this->_username = $username;
         $this->_password = $password;
@@ -495,7 +495,7 @@ class SimpleHttpResponse extends SimpleStickyError {
      *    @access public
      */
     function __construct(&$socket, $url, $encoding) {
-        $this->SimpleStickyError();
+        parent::__construct();
         $this->_url = $url;
         $this->_encoding = $encoding;
         $this->_sent = $socket->getSent();
