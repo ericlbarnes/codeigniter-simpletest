@@ -27,9 +27,9 @@ class EclipseReporter extends SimpleScorer {
      *    @param object $listener   Eclipse listener (?).
      *    @param boolean $cc        Whether to include test coverage.
      */
-    function EclipseReporter(&$listener, $cc=false){
+    function __construct(&$listener, $cc=false){
         $this->_listener = &$listener;
-        $this->SimpleScorer();
+        parent::__construct();
         $this->_case = "";
         $this->_group = "";
         $this->_method = "";
@@ -273,9 +273,9 @@ class EclipseReporter extends SimpleScorer {
  *  @subpackage Eclipse
  */
 class EclipseInvoker extends SimpleInvokerDecorator{
-    function EclipseInvoker(&$invoker, &$listener) {
+    function __construct(&$invoker, &$listener) {
         $this->_listener = &$listener;
-        $this->SimpleInvokerDecorator($invoker);
+        parent::__construct($invoker);
     }
     
     /**

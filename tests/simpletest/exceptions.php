@@ -25,8 +25,8 @@ class SimpleExceptionTrappingInvoker extends SimpleInvokerDecorator {
      *    Stores the invoker to be wrapped.
      *    @param SimpleInvoker $invoker   Test method runner.
      */
-    function SimpleExceptionTrappingInvoker($invoker) {
-        $this->SimpleInvokerDecorator($invoker);
+    function __constructpingInvoker($invoker) {
+        parent::__construct($invoker);
     }
 
     /**
