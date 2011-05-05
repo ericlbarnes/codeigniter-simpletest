@@ -238,7 +238,7 @@ class Log {
 <strong>require_once('simpletest/autorun.php');</strong>
 
 class AllTests extends <strong>TestSuite</strong> {
-    function AllTests() {
+    function __construct() {
         $this-&gt;TestSuite(<strong>'All tests'</strong>);
         <strong>$this-&gt;addFile('log_test.php');</strong>
     }

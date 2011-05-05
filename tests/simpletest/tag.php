@@ -31,7 +31,7 @@ class SimpleTag {
      *                               the keys must have been
      *                               converted to lower case.
      */
-    function SimpleTag($name, $attributes) {
+    function __construct($name, $attributes) {
         $this->_name = strtolower(trim($name));
         $this->_attributes = $attributes;
         $this->_content = '';
@@ -162,7 +162,7 @@ class SimpleBaseTag extends SimpleTag {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function SimpleBaseTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleTag('base', $attributes);
     }
 
@@ -188,7 +188,7 @@ class SimpleTitleTag extends SimpleTag {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function SimpleTitleTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleTag('title', $attributes);
     }
 }
@@ -205,7 +205,7 @@ class SimpleAnchorTag extends SimpleTag {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function SimpleAnchorTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleTag('a', $attributes);
     }
     
@@ -239,7 +239,7 @@ class SimpleWidget extends SimpleTag {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function SimpleWidget($name, $attributes) {
+    function __construct($name, $attributes) {
         $this->SimpleTag($name, $attributes);
         $this->_value = false;
         $this->_label = false;
@@ -344,7 +344,7 @@ class SimpleTextTag extends SimpleWidget {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function SimpleTextTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleWidget('input', $attributes);
         if ($this->getAttribute('value') === false) {
             $this->_setAttribute('value', '');
@@ -387,7 +387,7 @@ class SimpleSubmitTag extends SimpleWidget {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function SimpleSubmitTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleWidget('input', $attributes);
         if ($this->getAttribute('value') === false) {
             $this->_setAttribute('value', 'Submit');
@@ -445,7 +445,7 @@ class SimpleImageSubmitTag extends SimpleWidget {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function SimpleImageSubmitTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleWidget('input', $attributes);
     }
     
@@ -521,7 +521,7 @@ class SimpleButtonTag extends SimpleWidget {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function SimpleButtonTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleWidget('button', $attributes);
     }
     
@@ -577,7 +577,7 @@ class SimpleTextAreaTag extends SimpleWidget {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function SimpleTextAreaTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleWidget('textarea', $attributes);
     }
     
@@ -662,7 +662,7 @@ class SimpleUploadTag extends SimpleWidget {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function SimpleUploadTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleWidget('input', $attributes);
     }
     
@@ -705,7 +705,7 @@ class SimpleSelectionTag extends SimpleWidget {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function SimpleSelectionTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleWidget('select', $attributes);
         $this->_options = array();
         $this->_choice = false;
@@ -792,7 +792,7 @@ class MultipleSelectionTag extends SimpleWidget {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function MultipleSelectionTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleWidget('select', $attributes);
         $this->_options = array();
         $this->_values = false;
@@ -883,7 +883,7 @@ class SimpleOptionTag extends SimpleWidget {
     /**
      *    Stashes the attributes.
      */
-    function SimpleOptionTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleWidget('option', $attributes);
     }
     
@@ -945,7 +945,7 @@ class SimpleRadioButtonTag extends SimpleWidget {
      *    Stashes the attributes.
      *    @param array $attributes        Hash of attributes.
      */
-    function SimpleRadioButtonTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleWidget('input', $attributes);
         if ($this->getAttribute('value') === false) {
             $this->_setAttribute('value', 'on');
@@ -1003,7 +1003,7 @@ class SimpleCheckboxTag extends SimpleWidget {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function SimpleCheckboxTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleWidget('input', $attributes);
         if ($this->getAttribute('value') === false) {
             $this->_setAttribute('value', 'on');
@@ -1359,7 +1359,7 @@ class SimpleLabelTag extends SimpleTag {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function SimpleLabelTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleTag('label', $attributes);
     }
     
@@ -1385,7 +1385,7 @@ class SimpleFormTag extends SimpleTag {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function SimpleFormTag($attributes) {
+    function __constructTag($attributes) {
         $this->SimpleTag('form', $attributes);
     }
 }
@@ -1402,7 +1402,7 @@ class SimpleFrameTag extends SimpleTag {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function SimpleFrameTag($attributes) {
+    function __construct($attributes) {
         $this->SimpleTag('frame', $attributes);
     }
     

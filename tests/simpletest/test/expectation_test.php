@@ -80,7 +80,7 @@ class TestOfInequality extends UnitTestCase {
 class RecursiveNasty {
     var $_me;
 
-    function RecursiveNasty() {
+    function __construct() {
         $this->_me = $this;
     }
 }

@@ -6,7 +6,7 @@ SimpleTest::ignore('MockTestSuite');
 Mock::generate('TestSuite');
 
 class PathEqualExpectation extends EqualExpectation {
-	function PathEqualExpectation($value, $message = '%s') {
+	function __construct($value, $message = '%s') {
     	$this->EqualExpectation(str_replace("\\", '/', $value), $message);
 	}
 
