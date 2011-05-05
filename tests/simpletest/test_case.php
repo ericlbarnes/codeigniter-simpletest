@@ -51,7 +51,7 @@ class SimpleTestCase {
      *                            the class name is used.
      *    @access public
      */
-    function __constructCase($label = false) {
+    function __construct($label = false) {
         if ($label) {
             $this->_label = $label;
         }
