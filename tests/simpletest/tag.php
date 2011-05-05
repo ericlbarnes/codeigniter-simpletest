@@ -1385,7 +1385,7 @@ class SimpleFormTag extends SimpleTag {
      *    @param hash $attributes    Attribute names and
      *                               string values.
      */
-    function __constructTag($attributes) {
+    function __construct($attributes) {
         parent::__construct('form', $attributes);
     }
 }
