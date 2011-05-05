@@ -270,7 +270,7 @@ class SimpleErrorQueue {
  *    @static
  *    @access public
  */
-function __constructErrorHandler($severity, $message, $filename = null, $line = null, $super_globals = null, $mask = null) {
+function SimpleTestErrorHandler($severity, $message, $filename = null, $line = null, $super_globals = null, $mask = null) {
     $severity = $severity & error_reporting();
     if ($severity) {
         restore_error_handler();

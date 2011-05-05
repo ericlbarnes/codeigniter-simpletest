@@ -126,7 +126,7 @@ class SimplePageBuilder extends SimpleSaxListener {
      *    Sets the builder up empty.
      *    @access public
      */
-    function __constructBuilder() {
+    function __construct() {
         parent::__construct();
     }
     

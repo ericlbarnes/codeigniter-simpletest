@@ -232,7 +232,7 @@ class SimpleCookieJar {
      *    Constructor. Jar starts empty.
      *    @access public
      */
-    function __constructJar() {
+    function __construct() {
         $this->_cookies = array();
     }
     

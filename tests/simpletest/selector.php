@@ -115,7 +115,7 @@ class SimpleByLabelOrName {
      *    Stashes the name/label for later comparison.
      *    @param string $label     Visible text to match.
      */
-    function __constructOrName($label) {
+    function __construct($label) {
         $this->_label = $label;
     }
 

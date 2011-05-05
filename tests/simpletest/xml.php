@@ -485,7 +485,7 @@ class SimpleTestXmlParser {
      *    @param SimpleReporter $listener   Listener of tag events.
      *    @access public
      */
-    function __constructXmlParser(&$listener) {
+    function __construct(&$listener) {
         $this->_listener = &$listener;
         $this->_expat = &$this->_createParser();
         $this->_tag_stack = array();

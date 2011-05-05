@@ -35,7 +35,7 @@ class SimpleBrowserHistory {
      *    Starts empty.
      *    @access public
      */
-    function __constructHistory() {
+    function __construct() {
         $this->_sequence = array();
         $this->_position = -1;
     }

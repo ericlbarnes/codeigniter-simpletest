@@ -422,7 +422,7 @@ class SimpleReporterDecorator {
      *    Mediates between the reporter and the test case.
      *    @param SimpleScorer $reporter       Reporter to receive events.
      */
-    function __constructDecorator(&$reporter) {
+    function __construct(&$reporter) {
         $this->_reporter = &$reporter;
     }
 
