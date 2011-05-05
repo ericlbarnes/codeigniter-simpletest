@@ -206,7 +206,7 @@ class TestOfCallSchedule extends UnitTestCase {
 }
 
 class Dummy {
-    function Dummy() {
+    function __construct() {
     }
 
     function aMethod() {
@@ -444,9 +444,9 @@ SimpleTest::setMockBaseClass('SimpleMock');
 Mock::generate('SimpleTestCase');
 
 class LikeExpectation extends IdenticalExpectation {
-    function LikeExpectation($expectation) {
+    function __construct($expectation) {
         $expectation->_message = '';
-        $this->IdenticalExpectation($expectation);
+        parent::__construct($expectation);
     }
 
     function test($compare) {
@@ -855,7 +855,7 @@ class TestOfPartialMocks extends UnitTestCase {
 }
 
 class ConstructorSuperClass {
-    function ConstructorSuperClass() { }
+    function __construct() { }
 }
 
 class ConstructorSubClass extends ConstructorSuperClass {

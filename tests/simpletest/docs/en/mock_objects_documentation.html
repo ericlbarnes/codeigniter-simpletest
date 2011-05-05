@@ -681,7 +681,7 @@ class LoggingSessionPoolTest extends UnitTestCase {
 <strong>
     Mock::generate('Connection', 'BasicMockConnection');
     class MockConnection extends BasicMockConnection {
-        function MockConnection() {
+        function __constructConnection() {
             $this-&gt;BasicMockConnection();
             $this-&gt;setReturn('query', false);
         }

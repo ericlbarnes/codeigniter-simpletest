@@ -261,7 +261,7 @@
 	}
 
     class Dummy {
-        function Dummy() {
+        function __construct() {
         }
 
         function a() {
