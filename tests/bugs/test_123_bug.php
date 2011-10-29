@@ -4,7 +4,7 @@ class test_123_bug extends CodeIgniterUnitTestCase
 
 	public function __construct()
 	{
-		parent::__construct();
+		parent::__construct('Bug 123 Fix');
 	}
 
 	public function setUp()
