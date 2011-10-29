@@ -2,8 +2,9 @@
 
 Updates:
 
-April 25, 2011 - The CodeIgniter core is now being converted to using phpUnit and as such I can't see myself updating this in the future. It will be left here
-for anyone to use and I will gladly pull in any changes but no new features will be added by me directly. 
+The CodeIgniter core is now being converted to using phpUnit so I'm using simpletest as a stopgap measure.
+
+In additon to the origional version I've added the ability to output the test results in Junit format for use in continuous integration systems based on work from <https://techknowhow.library.emory.edu/blogs/rsutton/2009/07/24/using-hudson-php-simpletest>
 
 ## Overview
 
