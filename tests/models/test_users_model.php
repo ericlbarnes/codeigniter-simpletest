@@ -5,9 +5,7 @@ class test_users_model extends CodeIgniterUnitTestCase
 
 	public function __construct()
 	{
-		parent::__construct();
-
-		$this->UnitTestCase('Users Model');
+		parent::__construct('Users Model');
 
 		$this->load->model('users/users_model');
 
