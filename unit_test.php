@@ -29,9 +29,9 @@ $test_suite->_label = 'CodeIgniter Test Suite';
 class CodeIgniterUnitTestCase extends UnitTestCase {
 	protected $_ci;
 
-	public function __construct()
+	public function __construct($name = '')
 	{
-		parent::__construct();
+		parent::__construct($name);
 		$this->_ci =& get_instance();
 	}
 
@@ -44,9 +44,9 @@ class CodeIgniterUnitTestCase extends UnitTestCase {
 class CodeIgniterWebTestCase extends WebTestCase {
 	protected $_ci;
 
-	public function __construct()
+	public function __construct($name = '')
 	{
-		parent::__construct();
+		parent::__construct($name);
 		$this->_ci =& get_instance();
 	}
 
