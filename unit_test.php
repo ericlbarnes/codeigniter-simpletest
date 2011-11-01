@@ -29,9 +29,9 @@ $test_suite->_label = 'CodeIgniter Test Suite';
 class CodeIgniterUnitTestCase extends UnitTestCase {
 	protected $_ci;
 
-	public function __construct()
+	public function __construct($name = '')
 	{
-		parent::UnitTestCase();
+		parent::__construct($name);
 		$this->_ci =& get_instance();
 	}
 
@@ -44,9 +44,9 @@ class CodeIgniterUnitTestCase extends UnitTestCase {
 class CodeIgniterWebTestCase extends WebTestCase {
 	protected $_ci;
 
-	public function __construct()
+	public function __construct($name = '')
 	{
-		parent::WebTestCase();
+		parent::__construct($name);
 		$this->_ci =& get_instance();
 	}
 
@@ -92,7 +92,7 @@ if ($run_all OR ( ! empty($_POST) && ! isset($_POST['test'])))
 			{
 				if ($file != 'index.html')
 				{
-					$test_suite->addTestFile($dir . '/' . $file);
+					$test_suite->addFile($dir . '/' . $file);
 				}
 			}
 		}
@@ -104,7 +104,7 @@ elseif (isset($_POST['test'])) //single test
 
 	if (file_exists(TESTS_DIR . $file))
 	{
-		$test_suite->addTestFile(TESTS_DIR . $file);
+		$test_suite->addFile(TESTS_DIR . $file);
 	}
 }
 

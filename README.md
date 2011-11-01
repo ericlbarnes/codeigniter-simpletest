@@ -2,8 +2,9 @@
 
 Updates:
 
-April 25, 2011 - The CodeIgniter core is now being converted to using phpUnit and as such I can't see myself updating this in the future. It will be left here
-for anyone to use and I will gladly pull in any changes but no new features will be added by me directly. 
+The CodeIgniter core is now being converted to using phpUnit so I'm using simpletest as a stopgap measure.
+
+In additon to the origional version I've added the ability to output the test results in Junit format for use in continuous integration systems based on work from <https://techknowhow.library.emory.edu/blogs/rsutton/2009/07/24/using-hudson-php-simpletest>
 
 ## Overview
 
@@ -38,7 +39,7 @@ I have included a full download of simpletest and the only customization I have 
 
 Inside the "tests" directory I include two example test files. The test_users_model.php will not run on its own because your application would not include the same users model as the example file. It is supplied just as a guide.
 
-Also note that the version of simpletest included does not support php 5.3. I plan to upgrade it at some point.
+This version is now compatible with PHP 5.3
 
 ## Credits
 
@@ -47,3 +48,4 @@ Also note that the version of simpletest included does not support php 5.3. I pl
   * RT Wolf - <http://www.mind-manual.com>
   * John S. - <http://github.com/juven14>
   * Istvan Pusztai - <http://codeigniter.com/forums/viewthread/129253/P10/#697201>
+  * Oliver Smith <http://github.com/chemicaloliver>
