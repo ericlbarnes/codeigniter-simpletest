@@ -1,88 +1,120 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset='utf-8'>
-
-  <title>ericbarnes/codeigniter-simpletest @ GitHub</title>
-
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #c7c7c7;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #383838; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #383838; }
-    h3 { text-align: center; color: #383838; }
-    a { color: #383838; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+	<meta charset='utf-8'>
+	<title>CodeIgniter SimpleTest</title>
+	<meta name="description" content="">
+	<meta name="author" content="Eric Barnes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="http://ericlbarnes.s3.amazonaws.com/images/favicon.png">
+	<link rel="apple-touch-icon" href="http://ericlbarnes.s3.amazonaws.com/images/apple-touch-icon.png">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="alternate" type="application/rss+xml" title="Eric Barnes RSS Feed" href="http://feeds.feedburner.com/EricLBarnes" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script src="js/slides.min.jquery.js"></script>
+	<script>
+		$(function(){
+			$('#slides').slides({
+				preload: true,
+				preloadImage: 'img/loading.gif',
+				play: 5000,
+				pause: 2500,
+				hoverPause: true,
+				animationStart: function(current){
+					$('.caption').animate({
+						bottom:-35
+					},100);
+				},
+				animationComplete: function(current){
+					$('.caption').animate({
+						bottom:0
+					},200);
+				},
+				slidesLoaded: function() {
+					$('.caption').animate({
+						bottom:0
+					},200);
+				}
+			});
+		});
+	</script>
 </head>
 
 <body>
-  <a href="https://github.com/ericbarnes/codeigniter-simpletest"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+	<a href="https://github.com/ericbarnes/codeigniter-simpletest"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" /></a>
 
-  <div id="container">
+	<h1><a href="https://github.com/ericbarnes/codeigniter-simpletest">Codeigniter Simpletest</a></h1>
 
-    <div class="download">
-      <a href="https://github.com/ericbarnes/codeigniter-simpletest/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/ericbarnes/codeigniter-simpletest/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
+	<div id="container">
 
-    <h1><a href="https://github.com/ericbarnes/codeigniter-simpletest">codeigniter-simpletest</a>
-      <span class="small">by <a href="https://github.com/ericbarnes">ericbarnes</a></span></h1>
+		<div id="slides">
+				<div class="slides_container">
+					<div class="slide">
+						<img src="img/slide-1.png" width="570" height="270" alt="Passed Test">
+						<div class="caption" style="bottom:0">
+							<p>Passed Tests!</p>
+						</div>
+					</div>
+					<div class="slide">
+						<img src="img/slide-2.png" width="570" height="270" alt="Failed Tests">
+						<div class="caption" style="bottom:0">
+							<p>Failed Tests!</p>
+						</div>
+					</div>
+				</div>
+				<a href="#" class="prev"><img src="img/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
+				<a href="#" class="next"><img src="img/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>
+			</div>
+			<img src="img/example-frame.png" width="739" height="341" alt="Example Frame" id="frame">
+		<div class="download">
+			<a href="https://github.com/ericbarnes/codeigniter-simpletest/zipball/master">
+			<img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
+			<a href="https://github.com/ericbarnes/codeigniter-simpletest/tarball/master">
+			<img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
+		</div>
 
-    <div class="description">
-      Simpletest Integration for CodeIgniter
-    </div>
+		<div id="content">
+			<p>This CodeIgniter SimpleTest script is a community project to bring SimpleTest unit testing inside the CodeIgniter framework.</p>
 
-    
+			<h2>Download</h2>
+			<p>
+				You can download this project in either
+				<a href="https://github.com/ericbarnes/codeigniter-simpletest/zipball/master">zip</a> or
+				<a href="https://github.com/ericbarnes/codeigniter-simpletest/tarball/master">tar formats.
+			</p>
+			<p>You can also clone the project with <a href="http://git-scm.com">Git</a> by running:
+				<pre>$ git clone git://github.com/ericbarnes/codeigniter-simpletest</pre>
+			</p>
 
-    
+			<h2>Installation</h2>
 
-    
+			<p>The unit_test.php file should go in your CodeIgniter root. The same place as index.php</p>
 
-    
+			<p>You should open that file and alter your paths at the top.</p>
 
-    
-      <h2>Authors</h2>
-      <p>Eric Barnes<br/>Oliver Smith<br/>Joe<br/>Konstantin Stepanov<br/>      </p>
-    
+			<p>The tests directory can be moved any where you want but they are setup to be in the root as well.</p>
 
-    
-      <h2>Contact</h2>
-      <p>Eric Barnes (http://ericlbarnes.com)<br/>      </p>
-    
+			<p>All test files need to be named test_name_folder.php. For example:</p>
 
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/ericbarnes/codeigniter-simpletest/zipball/master">zip</a> or
-      <a href="https://github.com/ericbarnes/codeigniter-simpletest/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/ericbarnes/codeigniter-simpletest</pre>
-    </p>
+			<pre>test_whatever_bug.php
+test_string_helper.php
+test_auth_library.php
+test_core_model.php</pre>
 
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/ericbarnes/codeigniter-simpletest">ericbarnes/codeigniter-simpletest</a>
-    </div>
+			<p>I have included a full download of simpletest and the only customization I have made is to the simpletest/extensions/my_reporter.php.</p>
 
-  </div>
+			<h2>Contributors</h2>
+			<ul>
+				<li>Eric Barnes</li>
+				<li>Oliver Smith</li>
+				<li>Joe</li>
+				<li>Konstantin Stepanov</li>
+			</ul>
+		</div>
+		<div class="footer">
+			get the source code on GitHub : <a href="https://github.com/ericbarnes/codeigniter-simpletest">ericbarnes/codeigniter-simpletest</a>
+		</div>
+	</div>
 
 </body>
 </html>
