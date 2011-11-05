@@ -44,9 +44,9 @@ class CodeIgniterUnitTestCase extends UnitTestCase {
 	}
 
 	public function __get($var)
-    {
+	{
 		return $this->_ci->$var;
-    }
+	}
 }
 
 class CodeIgniterWebTestCase extends WebTestCase {
@@ -59,9 +59,9 @@ class CodeIgniterWebTestCase extends WebTestCase {
 	}
 
 	public function __get($var)
-    {
+	{
 		return $this->_ci->$var;
-    }
+	}
 }
 
 // Because get is removed in ci we pull it out here.
@@ -71,8 +71,6 @@ if (isset($_GET['all']) || isset($_POST['all']))
 	$run_all = TRUE;
 }
 
-
-
 //Capture CodeIgniter output, discard and load system into $CI variable
 ob_start();
 	include(ROOT . 'index.php');
@@ -81,9 +79,7 @@ ob_end_clean();
 
 $CI->load->library('session');
 $CI->session->sess_destroy();
-
 $CI->load->helper('directory');
-
 
 // Get all main tests
 if ($run_all OR ( ! empty($_POST) && ! isset($_POST['test'])))
@@ -127,20 +123,20 @@ elseif (isset($_POST['test'])) //single test
  */
 function setup_cli($argv)
 {
-	if (php_sapi_name() == 'cli') 
+	if (php_sapi_name() == 'cli')
 	{
-		if(isset($argv[1])) 
+		if(isset($argv[1]))
 		{
 			if(stripos($argv[1],'.php') !== false)
 			{
 				$_POST['test'] = $argv[1];
-                        }
-			else 
+			}
+			else
 			{
 				$_POST[$argv[1]] = $argv[1];
 			}
 		}
-		else 
+		else
 		{
 			$_POST['all'] = 'all';
 		}
@@ -187,15 +183,11 @@ $bugs = map_tests(TESTS_DIR . 'bugs');
 $helpers = map_tests(TESTS_DIR . 'helpers');
 $form_url =  'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
-//display the form
-//if ($cli_mode) {
-//    exit ($test_suite->run(new TextReporter()) ? 0 : 1);
-//}
-//else {
-//    include(TESTS_DIR . 'test_gui.php');
-//}
-
-if($cli_mode) { 
-       exit ($test_suite->run(new XMLtimeReporter()) ? 0 : 1); } 
-    else {
-        include(TESTS_DIR . 'test_gui.php');}
+if ($cli_mode)
+{
+	exit ($test_suite->run(new XMLtimeReporter()) ? 0 : 1);
+}
+else
+{
+	include(TESTS_DIR . 'test_gui.php');
+}

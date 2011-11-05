@@ -35,6 +35,14 @@ All test files need to be named `test_name_folder.php`. For example:
 
 I have included a full download of simpletest and the only customization I have made is to the `simpletest/extensions/my_reporter.php`.
 
+## Usage:
+
+Once you have installed you can either run tests through the browser or via command line.
+
+* Browser - Visit yoursite.com/unit_test.php
+* Command Link - `$ php unit_test.php`
+* XML Results - `$ php unit_test_xml.php`
+
 ### NOTES:
 
 Inside the "tests" directory I include two example test files. The test_users_model.php will not run on its own because your application would not include the same users model as the example file. It is supplied just as a guide.
