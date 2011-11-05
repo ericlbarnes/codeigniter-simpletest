@@ -7,7 +7,7 @@ Frank Hmeidan - <http://twitter.com/frankhmeidan>
 
 Place the TestRunnerTask.php file in the following location: "phing/tasks/ext/TestRunnerTask.php"
 
-Next create this in your Phing build file: 
+Next create this in your Phing build file:
 
 	<target name="unit_test">
 		<taskdef classname="phing.tasks.ext.TestRunnerTask" name="unit-test" />

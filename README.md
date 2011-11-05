@@ -43,7 +43,7 @@ Once you have installed you can either run tests through the browser or via comm
 * Command Link - `$ php unit_test.php`
 * XML Results - `$ php unit_test_xml.php`
 
-### NOTES:
+## NOTES:
 
 Inside the "tests" directory I include two example test files. The test_users_model.php will not run on its own because your application would not include the same users model as the example file. It is supplied just as a guide.
 
