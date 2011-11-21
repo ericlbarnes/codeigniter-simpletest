@@ -11,34 +11,34 @@
 	</div>
 	
 	<div id="nav">
-		<form action="<?php echo $form_url; ?>" method="post">
+		<?php echo form_open($form_url); ?>
 			<input type="hidden" name="all" value="1" />
 			<input type="submit" value="All" />
-		</form>
-		<form action="<?php echo $form_url; ?>" method="post">
+		<?php echo form_close(); ?>
+		<?php echo form_open($form_url); ?>
 			<input type="hidden" name="libraries" value="1" />
 			<input type="submit" value="Libraries" />
-		</form>
-		<form action="<?php echo $form_url; ?>" method="post">
+		<?php echo form_close(); ?>
+		<?php echo form_open($form_url); ?>
 			<input type="hidden" name="controllers" value="1" />
 			<input type="submit" value="Controllers" />
-		</form>
-		<form action="<?php echo $form_url; ?>" method="post">
+		<?php echo form_close(); ?>
+		<?php echo form_open($form_url); ?>
 			<input type="hidden" name="models" value="1" />
 			<input type="submit" value="Models" />
-		</form>
-		<form action="<?php echo $form_url; ?>" method="post">
+		<?php echo form_close(); ?>
+		<?php echo form_open($form_url); ?>
 			<input type="hidden" name="helpers" value="1" />
 			<input type="submit" value="Helpers" />
-		</form>
-		<form action="<?php echo $form_url; ?>" method="post">
+		<?php echo form_close(); ?>
+		<?php echo form_open($form_url); ?>
 			<input type="hidden" name="views" value="1" />
 			<input type="submit" value="Views" />
-		</form>
-		<form action="<?php echo $form_url; ?>" method="post">
+		<?php echo form_close(); ?>
+		<?php echo form_open($form_url); ?>
 			<input type="hidden" name="bugs" value="1" />
 			<input type="submit" value="Bugs" />
-		</form>
+		<?php echo form_close(); ?>
 		
 		<?php
 		// RT Wolf's addition: HTML select the test you just ran in drop down list in case you want to rerun it.
@@ -52,7 +52,7 @@
 		}
 		?>
 		
-		<form action="<?php echo $form_url; ?>" method="post">
+		<?php echo form_open($form_url); ?>
 			<select name="test">
 				<optgroup label="Libraries">
 					<?php foreach ($libraries as $value) { ?>
@@ -86,7 +86,7 @@
 				</optgroup>
 			</select>
 			<input type="submit" value="Run" />
-		</form>
+		<?php echo form_close(); ?>
 	</div>
 		
 		
