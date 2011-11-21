@@ -91,7 +91,11 @@
 		
 		
 	<div id="report">
-		<?php $test_suite->run(new MyReporter()); ?>
+		<?php
+		    ob_start();
+		    $test_suite->run(new MyReporter());
+		    ob_end_flush();
+		?>
 	</div>
 		
 </body>
