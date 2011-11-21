@@ -73,6 +73,7 @@ $CI->load->library('session');
 $CI->session->sess_destroy();
 
 $CI->load->helper('directory');
+$CI->load->helper('form');
 
 // Get all main tests
 if ($run_all OR ( ! empty($_POST) && ! isset($_POST['test'])))
