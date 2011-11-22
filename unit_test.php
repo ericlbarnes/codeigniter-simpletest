@@ -3,8 +3,13 @@
  * Please note this file shouldn't be exposed on a live server,
  * there is no filtering of $_POST!!!!
  */
-error_reporting(0);
-$cli_mode = setup_cli($argv); // Determines if running in cli mode
+error_reporting(-1);
+
+// Determines if running in cli mode
+if (isset($argv))
+{
+	$cli_mode = setup_cli($argv);
+}
 
 /**
  * Configure your paths here:
@@ -15,7 +20,6 @@ define('SIMPLETEST', MAIN_PATH.'tests/simpletest/'); // Directory of simpletest
 define('ROOT', MAIN_PATH); // Directory of codeigniter index.php
 define('TESTS_DIR', MAIN_PATH.'tests/'); // Directory of your tests.
 define('APP_DIR', MAIN_PATH.'application/'); // CodeIgniter Application directory
-
 
 //do not use autorun as it output ugly report upon no test run
 require_once SIMPLETEST.'unit_tester.php';
