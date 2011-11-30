@@ -14,7 +14,6 @@ if (isset($argv))
 /**
  * Configure your paths here:
  */
-define('ENVIRONMENT', 'unit_test');
 define('MAIN_PATH', realpath(dirname(__FILE__)).'/');
 define('SIMPLETEST', MAIN_PATH.'tests/simpletest/'); // Directory of simpletest
 define('ROOT', MAIN_PATH); // Directory of codeigniter index.php
@@ -183,7 +182,7 @@ $helpers = map_tests(TESTS_DIR.'helpers');
 $form_url =  'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 //display the form
-if ($cli_mode)
+if (isset($cli_mode))
 {
 	exit ($test_suite->run(new TextReporter()) ? 0 : 1);
 }
