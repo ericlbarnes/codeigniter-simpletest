@@ -187,7 +187,7 @@ class MyReporter extends SimpleReporter {
 			<div class="result">PASSED</div>
 			<h3>'.$test.'</h3>
 			<div class="details">
-				<em>'.$message.'</em>
+				<em>'.$this->_htmlEntities($message).'</em>
 			</div>
 		</div>
 		';
@@ -211,7 +211,7 @@ class MyReporter extends SimpleReporter {
 			<div class="result">FAILED</div>
 			<h3>'.$test.'</h3>
 			<div class="details">
-				<em>'.$message.'</em>
+				<em>'.$this->_htmlEntities($message).'</em>
 			</div>
 		</div>
 		';
