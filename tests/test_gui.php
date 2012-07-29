@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <title>CodeIgniter &rsaquo; Unit Testing &rsaquo; Index</title>
 <link rel="stylesheet" type="text/css" href="tests/unit_test.css" charset="utf-8">
 
