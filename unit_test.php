@@ -26,6 +26,7 @@ require_once SIMPLETEST.'mock_objects.php';
 require_once SIMPLETEST.'collector.php';
 require_once SIMPLETEST.'web_tester.php';
 require_once SIMPLETEST.'extensions/my_reporter.php';
+require_once SIMPLETEST.'extensions/cli_reporter.php';
 
 $test_suite = new TestSuite();
 $test_suite->_label = 'CodeIgniter Test Suite';
@@ -184,7 +185,7 @@ $form_url =  'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 //display the form
 if (isset($cli_mode))
 {
-	exit ($test_suite->run(new TextReporter()) ? 0 : 1);
+	exit ($test_suite->run(new CliReporter()) ? 0 : 1);
 }
 else
 {
